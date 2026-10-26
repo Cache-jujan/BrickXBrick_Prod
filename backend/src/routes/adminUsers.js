@@ -73,7 +73,7 @@ router.post("/", async (req, res) => {
 
     const result = await query(
       `INSERT INTO Users (name, fullname, email, supabaseUserId, role, status)
-       VALUES ($1, $1, $2, $3, $4, 'Active')
+       VALUES ($1::text, $1::text, $2, $3, $4, 'Active')
        RETURNING userID, name, email, role, status`,
       [name, email, authUserId, role]
     );
